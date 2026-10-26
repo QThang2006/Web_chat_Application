@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo Cáo Tiến Độ Đồ Án - Đề Tài 18 Linux</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    
+    * {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-zinc-100 text-zinc-900 select-none overflow-hidden h-screen w-screen flex flex-col justify-between">
+
+  <!-- Top Progress Bar -->
+  <div class="w-full bg-zinc-200 h-1 fixed top-0 left-0 z-50">
+    <div id="progressBar" class="bg-blue-600 h-1 transition-all duration-300 ease-out" style="width: 10%;"></div>
+  </div>
+
+  <!-- Header Bar -->
+  <header class="flex h-12 shrink-0 items-center justify-between border-b border-zinc-200/80 bg-white/90 backdrop-blur px-6 z-40">
+    <div class="flex items-center gap-2">
+      <span class="flex h-6 w-6 items-center justify-center rounded-md bg-zinc-900 text-[11px] font-bold text-white">18</span>
+      <span class="text-xs font-bold text-zinc-800">Linux Project Progress Report</span>
+      <span class="text-zinc-300">|</span>
+      <span class="text-xs text-zinc-500">Ubuntu Web Server Configuration</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="slideCounter" class="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-0.5 text-xs font-semibold text-zinc-600">
+        1 / 10
+      </span>
+      <button onclick="toggleFullScreen()" title="Toàn màn hình (F)" class="rounded-md border border-zinc-200 p-1.5 text-zinc-500 hover:bg-zinc-100 transition">
+        <i class="fa-solid fa-expand text-xs"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Canvas Container -->
+  <main class="flex-1 flex items-center justify-center p-4 md:p-8 overflow-hidden">
+    <div class="w-full max-w-6xl h-full max-h-[740px] bg-white rounded-2xl border border-zinc-200/90 shadow-xl shadow-zinc-200/50 flex flex-col overflow-hidden relative">
+
+      <!-- ==================== SLIDE 1 ==================== -->
+      <section class="slide active flex-1 p-8 md:p-14 flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+            <i class="fa-brands fa-ubuntu text-sm"></i> BÁO CÁO TIẾN ĐỘ ĐỒ ÁN HỌC PHẦN
+          </span>
+          <span class="text-xs font-mono text-zinc-400">Học kỳ I • Năm học 2026-2027</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <div class="text-sm font-semibold uppercase tracking-wider text-blue-600">Đề tài số 18</div>
+          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight">
+            Web chat - Webserver configuration in Ubuntu
+          </h1>
+          <p class="text-base text-zinc-500 max-w-2xl leading-relaxed">
+            Thiết kế, xây dựng và quản trị hệ thống Máy chủ Web Server phân tán trên nền tảng Ubuntu Server, tích hợp ứng dụng truyền thông thời gian thực và quản trị an ninh hệ điều hành.
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-zinc-100 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+          <div>
+            <div class="text-zinc-400">Thành viên 1 (Trưởng nhóm)</div>
+            <div class="font-bold text-zinc-800 mt-0.5">Quản trị Nginx & Mạng</div>
+          </div>
+          <div>
+            <div class="text-zinc-400">Thành viên 2</div>
+            <div class="font-bold text-zinc-800 mt-0.5">NestJS Backend & CSDL</div>
+          </div>
+          <div>
+            <div class="text-zinc-400">Thành viên 3</div>
+            <div class="font-bold text-zinc-800 mt-0.5">React Frontend & UI/UX</div>
+          </div>
+          <div>
+            <div class="text-zinc-400">Thành viên 4</div>
+            <div class="font-bold text-zinc-800 mt-0.5">DevOps & Systemd Admin</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">01. Tổng quan & Bản chất</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Mục tiêu Cốt lõi của Môn học Linux</h2>
+          <p class="text-xs text-zinc-500 mt-1">Ứng dụng Web Chat là công cụ kiểm thử, trọng tâm là biến máy tính thành máy chủ đạt chuẩn công nghiệp.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto">
+          <div class="p-5 rounded-xl border border-zinc-200/90 bg-zinc-50/50 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3 class="font-bold text-zinc-900 text-sm">Quản trị Dịch vụ (Daemons)</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">
+              Vận hành các dịch vụ hệ thống nền tảng: <span class="font-mono text-zinc-800 font-semibold">nginx</span>, <span class="font-mono text-zinc-800 font-semibold">systemd</span> và <span class="font-mono text-zinc-800 font-semibold">mysql</span>, thiết lập tự khởi động cùng OS.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-zinc-200/90 bg-zinc-50/50 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-bold text-zinc-900 text-sm">An ninh Mạng & Phân quyền</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">
+              Thiết lập chính sách phân quyền đặc quyền tối thiểu (Least Privilege), mã hóa SSL/TLS, và kiểm soát cổng truy cập qua tường lửa UFW.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-zinc-200/90 bg-zinc-50/50 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h3 class="font-bold text-zinc-900 text-sm">Tự động hóa & Khôi phục</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">
+              Người quản trị Linux không thao tác thủ công: Viết kịch bản tự động triển khai (Deploy Script) và lập lịch sao lưu CSDL định kỳ qua Crontab.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-3.5 bg-blue-50/80 rounded-xl border border-blue-200/60 flex items-center gap-3 text-xs text-blue-900">
+          <i class="fa-solid fa-circle-info text-blue-600 text-sm shrink-0"></i>
+          <span><strong>Tiêu chí đánh giá của giảng viên:</strong> Không chỉ chấm giao diện mà đánh giá trực tiếp vào file cấu hình Nginx, Systemd Unit, quyền User hệ thống, Log và khả năng tự phục hồi.</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">02. Thiết kế Hạ tầng</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Kiến trúc Hệ thống Đa tầng</h2>
+          <p class="text-xs text-zinc-500 mt-1">Mô hình phân luồng truy cập bảo mật giữa Client, Nginx Gateway, Application Server và Database.</p>
+        </div>
+
+        <!-- System Architecture Visual Diagram -->
+        <div class="my-auto p-4 rounded-xl border border-zinc-200 bg-zinc-50/60 space-y-3">
+          <div class="flex items-center justify-between text-xs font-semibold text-zinc-700 border-b border-zinc-200 pb-2">
+            <span>CLIENT LAYER (Browser / Mobile)</span>
+            <span class="text-blue-600 font-mono">Giao thức: HTTP (80) & HTTPS / WSS (443)</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-center text-xs">
+            <div class="p-3 bg-white border border-zinc-200 rounded-lg shadow-2xs">
+              <div class="text-[10px] font-bold text-zinc-400 uppercase">Tường lửa</div>
+              <div class="font-bold text-zinc-900 mt-1">UFW Firewall</div>
+              <div class="text-[10px] text-emerald-600 mt-0.5">Chỉ mở: 22, 80, 443</div>
+            </div>
+
+            <div class="p-3 bg-white border-2 border-blue-500 rounded-lg shadow-2xs">
+              <div class="text-[10px] font-bold text-blue-600 uppercase">Web Server Gateway</div>
+              <div class="font-bold text-zinc-900 mt-1">Nginx Reverse Proxy</div>
+              <div class="text-[10px] text-zinc-500 mt-0.5">SSL Termination • WebSocket</div>
+            </div>
+
+            <div class="p-3 bg-white border border-zinc-200 rounded-lg shadow-2xs">
+              <div class="text-[10px] font-bold text-zinc-400 uppercase">Application Server</div>
+              <div class="font-bold text-zinc-900 mt-1">NestJS (Systemd)</div>
+              <div class="text-[10px] text-zinc-500 mt-0.5">Cổng 3000 • User: chatuser</div>
+            </div>
+
+            <div class="p-3 bg-white border border-zinc-200 rounded-lg shadow-2xs">
+              <div class="text-[10px] font-bold text-zinc-400 uppercase">Database Server</div>
+              <div class="font-bold text-zinc-900 mt-1">MySQL Native</div>
+              <div class="text-[10px] text-zinc-500 mt-0.5">Cổng 3306 • webchat_db</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-[11px] pt-1">
+            <div class="p-2 bg-white rounded border border-zinc-200 text-zinc-600">
+              <strong>Luồng 1 (Tĩnh):</strong> Nginx phục vụ trực tiếp bản build <span class="font-mono text-zinc-800">fe/dist</span>, áp dụng Gzip và Cache 30 ngày.
+            </div>
+            <div class="p-2 bg-white rounded border border-zinc-200 text-zinc-600">
+              <strong>Luồng 2 (Động):</strong> Nginx chuyển tiếp <span class="font-mono text-zinc-800">/socket.io/</span> và <span class="font-mono text-zinc-800">/api/</span> về NestJS qua kết nối nội bộ Loopback.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-zinc-500 border-t border-zinc-100 pt-3">
+          <span><i class="fa-solid fa-shield-virus text-emerald-600"></i> Cổng 3000 và 3306 được cô lập hoàn toàn bên trong máy chủ</span>
+          <span class="font-mono text-[11px]">IP Máy chủ: 192.168.1.138</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 4 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">03. Tổ chức Dự án</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Cấu trúc 3 Thư mục Chuẩn Quốc tế</h2>
+          <p class="text-xs text-zinc-500 mt-1">Tách biệt rõ ràng giữa mã nguồn Frontend, Backend và Toàn bộ cấu hình hạ tầng Linux.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto">
+          <!-- Folder FE -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-blue-600 text-sm">📁 fe/</span>
+              <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.2 rounded font-semibold">Client SPA</span>
+            </div>
+            <p class="text-xs text-zinc-500">Ứng dụng React + Vite + Tailwind CSS:</p>
+            <ul class="text-[11px] font-mono text-zinc-700 space-y-1 list-disc list-inside">
+              <li>src/components/chat/</li>
+              <li>src/components/sidebar/</li>
+              <li>src/types/chat.types.ts</li>
+              <li>dist/ (Build tĩnh cho Nginx)</li>
+            </ul>
+          </div>
+
+          <!-- Folder BE -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-emerald-600 text-sm">📁 be/</span>
+              <span class="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-semibold">Server API</span>
+            </div>
+            <p class="text-xs text-zinc-500">NestJS Modular Architecture:</p>
+            <ul class="text-[11px] font-mono text-zinc-700 space-y-1 list-disc list-inside">
+              <li>src/entities/ (4 thực thể 3NF)</li>
+              <li>src/chat/ (WebSocket Gateway)</li>
+              <li>src/app.controller.ts (/api/health)</li>
+              <li>dist/main.js (Systemd chạy)</li>
+            </ul>
+          </div>
+
+          <!-- Folder Deploy -->
+          <div class="p-4 rounded-xl border-2 border-blue-600/70 bg-white space-y-2 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-zinc-900 text-sm">📁 deploy/</span>
+              <span class="text-[10px] bg-zinc-900 text-white px-1.5 py-0.2 rounded font-semibold">Linux Infra</span>
+            </div>
+            <p class="text-xs text-zinc-500">Quản trị Hệ điều hành & DevOps:</p>
+            <ul class="text-[11px] font-mono text-zinc-700 space-y-1 list-disc list-inside">
+              <li>nginx/webchat.conf</li>
+              <li>systemd/webchat.service</li>
+              <li>database/ (setup_db, restore)</li>
+              <li>scripts/ (deploy.sh, backup.sh)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-xs text-zinc-500 border-t border-zinc-100 pt-3 flex items-center justify-between">
+          <span>Ưu điểm: Không lẫn lộn mã nguồn ứng dụng với các file cấu hình nhạy cảm của Linux Server.</span>
+          <span class="font-bold text-zinc-800">Clean Architecture</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 5 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">04. Tiến độ Nhóm</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Phân công Nhiệm vụ & Kết quả Đạt được</h2>
+          <p class="text-xs text-zinc-500 mt-1">Thành viên 1 & 4 đồng chủ trì mảng Linux Admin & DevOps nhằm đảm bảo chất lượng kỹ thuật cao nhất.</p>
+        </div>
+
+        <div class="overflow-hidden border border-zinc-200 rounded-xl my-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-zinc-100/80 text-zinc-700 font-bold border-b border-zinc-200">
+              <tr>
+                <th class="p-3">Thành viên</th>
+                <th class="p-3">Vai trò</th>
+                <th class="p-3">Hạng mục phụ trách</th>
+                <th class="p-3 text-right">Tiến độ</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100 text-zinc-600">
+              <tr class="bg-blue-50/30">
+                <td class="p-3 font-bold text-zinc-900">Thành viên 1 & 4</td>
+                <td class="p-3 font-semibold text-blue-700">Linux Admin & DevOps</td>
+                <td class="p-3">Nginx Virtual Host, SSL, Systemd Unit, Tường lửa UFW, Script deploy & Crontab backup</td>
+                <td class="p-3 text-right"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">100%</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-zinc-900">Thành viên 2</td>
+                <td class="p-3 font-semibold text-emerald-700">Backend Developer</td>
+                <td class="p-3">NestJS WebSocket Gateway, Thiết kế 4 Entities CSDL MySQL, Lưu vết IP máy khách</td>
+                <td class="p-3 text-right"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">100%</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-zinc-900">Thành viên 3</td>
+                <td class="p-3 font-semibold text-sky-700">Frontend Developer</td>
+                <td class="p-3">React Client chia nhỏ Component, Tinh chỉnh màu dịu mắt, Sửa lỗi Stale Closure chuyển phòng</td>
+                <td class="p-3 text-right"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">100%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-zinc-500 border-t border-zinc-100 pt-3">
+          <span>Tiến độ tổng thể toàn bộ đề tài: <strong>Hoàn thành 100% các mục tiêu kỹ thuật</strong></span>
+          <span class="text-emerald-600 font-bold"><i class="fa-solid fa-check-circle"></i> Sẵn sàng bảo vệ</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 6 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">05. Kỹ thuật Trọng tâm</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Cấu hình Web Server Nginx & Systemd</h2>
+          <p class="text-xs text-zinc-500 mt-1">Những điểm mấu chốt kỹ thuật được thiết lập trực tiếp trên hệ điều hành Ubuntu.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+          <!-- Box Nginx -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <div class="flex items-center gap-2 font-bold text-zinc-900 text-xs">
+              <span class="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center text-[10px]">NG</span>
+              Cấu hình Nginx (deploy/nginx/webchat.conf)
+            </div>
+            <div class="p-2.5 bg-zinc-900 text-zinc-200 rounded-lg font-mono text-[10px] space-y-1">
+              <div class="text-zinc-400"># Bắt tay WebSocket không bị drop kết nối</div>
+              <div>proxy_set_header Upgrade $http_upgrade;</div>
+              <div>proxy_set_header Connection "upgrade";</div>
+              <div>proxy_http_version 1.1;</div>
+              <div class="text-zinc-400 mt-1"># Chống lỗi 404 khi người dùng F5 tải lại trang</div>
+              <div>try_files $uri $uri/ /index.html;</div>
+            </div>
+            <p class="text-[11px] text-zinc-500">Giữ kết nối WebSocket liên tục qua cổng 80/443 và phục vụ SPA mượt mà.</p>
+          </div>
+
+          <!-- Box Systemd -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <div class="flex items-center gap-2 font-bold text-zinc-900 text-xs">
+              <span class="w-6 h-6 rounded bg-blue-600 text-white flex items-center justify-center text-[10px]">SD</span>
+              Quản lý Dịch vụ (deploy/systemd/webchat.service)
+            </div>
+            <div class="p-2.5 bg-zinc-900 text-zinc-200 rounded-lg font-mono text-[10px] space-y-1">
+              <div class="text-zinc-400"># Chạy dưới quyền User an toàn (Least Privilege)</div>
+              <div>User=chatuser</div>
+              <div>Group=chatuser</div>
+              <div class="text-zinc-400 mt-1"># Tự động hồi sinh khi crash hoặc bị kill -9</div>
+              <div>Restart=always</div>
+              <div>RestartSec=5</div>
+            </div>
+            <p class="text-[11px] text-zinc-500">Bảo mật không dùng root, tự động khởi động cùng hệ điều hành.</p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-zinc-100 rounded-lg text-[11px] text-zinc-600 flex items-center justify-between">
+          <span>Khả năng chịu lỗi: Đã thử nghiệm lệnh <code class="font-mono font-bold text-zinc-800">sudo kill -9</code>, Systemd tự phục hồi sau đúng 5 giây.</span>
+          <span class="font-bold text-blue-600">Self-Healing System</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 7 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">06. Cơ sở Dữ liệu & Tự động hóa</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">MySQL Chuẩn 3NF & Sao lưu Crontab</h2>
+          <p class="text-xs text-zinc-500 mt-1">Mô hình dữ liệu quan hệ hoàn chỉnh kết hợp chiến lược phòng ngừa thảm họa.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+          <!-- Database Entities -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <h3 class="font-bold text-xs text-zinc-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-database text-blue-600"></i> CSDL MySQL (webchat_db • utf8mb4)
+            </h3>
+            <div class="space-y-1.5 text-[11px]">
+              <div class="p-2 bg-white rounded border border-zinc-200">
+                <strong>users:</strong> id (UUID), username, status (ONLINE/OFFLINE), lastIp, lastSeen
+              </div>
+              <div class="p-2 bg-white rounded border border-zinc-200">
+                <strong>rooms:</strong> id (UUID), name, type (PUBLIC/PRIVATE), description
+              </div>
+              <div class="p-2 bg-white rounded border border-zinc-200">
+                <strong>messages:</strong> id (UUID), room, user, text, <span class="text-blue-600 font-bold">ipAddress</span>, createdAt
+              </div>
+            </div>
+            <p class="text-[10px] text-zinc-400">Ghi lại chính xác IP thật của máy gửi tin lấy qua Nginx.</p>
+          </div>
+
+          <!-- Crontab Automation -->
+          <div class="p-4 rounded-xl border border-zinc-200 bg-zinc-50/50 space-y-2">
+            <h3 class="font-bold text-xs text-zinc-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-clock text-emerald-600"></i> Tự động hóa Sao lưu (Crontab)
+            </h3>
+            <div class="p-2.5 bg-zinc-900 text-zinc-200 rounded-lg font-mono text-[10px] space-y-1">
+              <div class="text-zinc-400"># Chạy lúc 02:00 sáng hàng ngày</div>
+              <div>0 2 * * * /deploy/scripts/backup.sh</div>
+              <div class="text-zinc-400 mt-1"># Xuất bản sao lưu nén qua mysqldump</div>
+              <div>mysqldump -u chatuser webchat_db | gzip > ...sql.gz</div>
+              <div class="text-zinc-400 mt-1"># Tự xóa file cũ hơn 7 ngày chống đầy đĩa</div>
+              <div>find /var/backups -mtime +7 -delete</div>
+            </div>
+            <p class="text-[10px] text-zinc-400">Có sẵn script <code class="font-mono text-zinc-700">restore_db.sh</code> khôi phục CSDL khi gặp sự cố.</p>
+          </div>
+        </div>
+
+        <div class="text-xs text-zinc-500 border-t border-zinc-100 pt-3 flex items-center justify-between">
+          <span>Toàn vẹn dữ liệu: Hỗ trợ tiếng Việt đầy đủ và icon emoji thông qua charset utf8mb4.</span>
+          <span class="font-bold text-emerald-600"><i class="fa-solid fa-check"></i> Disaster Recovery Ready</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">07. Kết quả Thực nghiệm</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Kiểm thử Trực tiếp trên Mạng LAN</h2>
+          <p class="text-xs text-zinc-500 mt-1">Hệ thống đã hoạt động trực tiếp trên máy chủ Ubuntu thật và được kiểm chứng đa thiết bị.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
+          <div class="p-4 rounded-xl border border-zinc-200 bg-white space-y-2">
+            <div class="text-zinc-400 text-[11px] font-semibold">Trạng thái Cổng Mạng</div>
+            <div class="text-xl font-bold text-emerald-600">4 / 4 Active</div>
+            <p class="text-[11px] text-zinc-500">
+              Port 80 (Nginx), 443 (SSL), 3000 (NestJS) và 3306 (MySQL) đều đang lắng nghe.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-zinc-200 bg-white space-y-2">
+            <div class="text-zinc-400 text-[11px] font-semibold">Địa chỉ Máy chủ LAN</div>
+            <div class="text-xl font-bold font-mono text-blue-600">192.168.1.138</div>
+            <p class="text-[11px] text-zinc-500">
+              Điện thoại và máy tính khác trong cùng mạng WiFi truy cập và chat thời gian thực tức thì.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-zinc-200 bg-white space-y-2">
+            <div class="text-zinc-400 text-[11px] font-semibold">Lưu vết Dữ liệu Thực tế</div>
+            <div class="text-xl font-bold text-zinc-900">MySQL Verified</div>
+            <p class="text-[11px] text-zinc-500">
+              Đã ghi nhận các tin nhắn thử nghiệm và địa chỉ IP của thiết bị vào bảng <code class="font-mono">messages</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-zinc-50 border border-zinc-200 rounded-lg text-xs font-mono text-zinc-600 flex items-center justify-between">
+          <span>Truy cập máy chủ: <strong>http://192.168.1.138/</strong> (hoặc https:// với SSL)</span>
+          <span class="text-emerald-600 font-bold">100% Functional</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9 ==================== -->
+      <section class="slide flex-1 p-8 md:p-12 flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blue-600">08. Kịch bản Vấn đáp</div>
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 mt-1">Kế hoạch Trình diễn trước Giảng viên</h2>
+          <p class="text-xs text-zinc-500 mt-1">Kịch bản 4 bước trực quan chứng minh đầy đủ kỹ năng quản trị hệ điều hành Linux.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 my-auto text-xs">
+          <div class="p-3.5 rounded-xl border border-zinc-200 bg-zinc-50/60 space-y-1.5">
+            <div class="font-bold text-blue-600">Bước 1: Live Chat</div>
+            <div class="font-semibold text-zinc-800">Demo Giao diện</div>
+            <p class="text-[11px] text-zinc-500">Mở máy tính & điện thoại chat qua lại tức thời để thấy WebSocket và chuyển đổi 4 phòng.</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl border border-zinc-200 bg-zinc-50/60 space-y-1.5">
+            <div class="font-bold text-emerald-600">Bước 2: Kill Test</div>
+            <div class="font-semibold text-zinc-800">Demo Systemd</div>
+            <p class="text-[11px] text-zinc-500">Chạy lệnh <code class="font-mono">sudo kill -9</code> tiến trình, chứng minh dịch vụ tự hồi sinh sau 5 giây.</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl border border-zinc-200 bg-zinc-50/60 space-y-1.5">
+            <div class="font-bold text-amber-600">Bước 3: DB & Log</div>
+            <div class="font-semibold text-zinc-800">Demo Dữ liệu</div>
+            <p class="text-[11px] text-zinc-500">Vào MySQL gõ lệnh SELECT xem tin nhắn và IP máy khách. Soi log Nginx thời gian thực.</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl border border-zinc-200 bg-zinc-50/60 space-y-1.5">
+            <div class="font-bold text-rose-600">Bước 4: Backup</div>
+            <div class="font-semibold text-zinc-800">Demo Tự động hóa</div>
+            <p class="text-[11px] text-zinc-500">Chạy script backup sinh file <code class="font-mono">.sql.gz</code> và thử nghiệm kịch bản phục hồi CSDL.</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-zinc-500 border-t border-zinc-100 pt-3">
+          <span>Kịch bản đã được 4 thành viên luyện tập và sẵn sàng trả lời phản biện.</span>
+          <span class="font-bold text-blue-600">Full Defense Ready</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 10 ==================== -->
+      <section class="slide flex-1 p-8 md:p-14 flex-col justify-between text-center items-center">
+        <div class="w-full flex justify-between items-center">
+          <span class="text-xs font-mono text-zinc-400">ĐỀ TÀI SỐ 18 • MÔN HỌC LINUX</span>
+          <span class="rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 text-xs font-bold border border-emerald-200">
+            TIẾN ĐỘ: HOÀN THÀNH 100%
+          </span>
+        </div>
+
+        <div class="my-auto space-y-4 max-w-xl">
+          <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mx-auto text-2xl shadow-lg shadow-blue-500/30">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-950 tracking-tight">
+            Cảm ơn Thầy/Cô và các bạn đã chú ý lắng nghe!
+          </h2>
+          <p class="text-sm text-zinc-500 leading-relaxed">
+            Nhóm 4 thành viên xin trân trọng lắng nghe các nhận xét, đánh giá và câu hỏi phản biện từ Giảng viên hướng dẫn.
+          </p>
+        </div>
+
+        <div class="w-full pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-400">
+          <span>Dự án: Web chat - Webserver configuration in Ubuntu</span>
+          <span>Q&A Session</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Navigation Control Bar -->
+  <footer class="h-14 border-t border-zinc-200 bg-white px-6 flex items-center justify-between z-40">
+    <div class="text-xs text-zinc-400 hidden sm:block">
+      Dùng phím <kbd class="px-1.5 py-0.5 border border-zinc-200 rounded bg-zinc-50 font-mono text-[10px]">←</kbd> <kbd class="px-1.5 py-0.5 border border-zinc-200 rounded bg-zinc-50 font-mono text-[10px]">→</kbd> hoặc <kbd class="px-1.5 py-0.5 border border-zinc-200 rounded bg-zinc-50 font-mono text-[10px]">Space</kbd> để chuyển Slide
+    </div>
+
+    <div class="flex items-center gap-2 mx-auto sm:mx-0">
+      <button onclick="prevSlide()" class="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 hover:bg-zinc-50 transition shadow-2xs">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i> Trước
+      </button>
+      <button onclick="nextSlide()" class="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition shadow-2xs">
+        Sau <i class="fa-solid fa-arrow-right text-[10px]"></i>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const counter = document.getElementById('slideCounter');
+    const progressBar = document.getElementById('progressBar');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        if (idx === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+      counter.innerText = `${currentSlide + 1} / ${totalSlides}`;
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      }
+    });
+  </script>
+</body>
+</html>

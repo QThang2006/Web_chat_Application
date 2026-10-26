@@ -1,0 +1,40 @@
+[Unit]
+Description=NestJS Web Chat Application Backend (Linux Course - Topic 18)
+Documentation=https://github.com/project-linux/webchat
+After=network.target mysql.service mariadb.service
+Wants=mysql.service
+
+[Service]
+# Chạy dưới quyền user hệ thống không có quyền root (Least Privilege)
+User=chatuser
+Group=chatuser
+
+# Thư mục làm việc của NestJS backend
+WorkingDirectory=/var/www/webchat/be
+
+# Khởi chạy bản build production đã biên dịch sang JavaScript
+ExecStart=/usr/bin/node dist/main.js
+
+# Cơ chế tự phục hồi: tự động restart nếu tiến trình bị kill (-9) hoặc crash
+Restart=always
+RestartSec=5
+
+# Giới hạn tài nguyên để bảo vệ hệ điều hành
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=webchat-nest
+
+# Biến môi trường
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=127.0.0.1
+Environment=DB_TYPE=mysql
+Environment=DB_HOST=127.0.0.1
+Environment=DB_PORT=3306
+Environment=DB_USER=chatuser
+Environment=DB_PASSWORD=ChatUser@123
+Environment=DB_NAME=webchat_db
+
+[Install]
+WantedBy=multi-user.target
