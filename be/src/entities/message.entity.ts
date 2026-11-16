@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('messages')
+@Index('IDX_messages_room_created_at', ['room', 'createdAt'])
 export class Message {
   @PrimaryGeneratedColumn('uuid')
   id: string;
